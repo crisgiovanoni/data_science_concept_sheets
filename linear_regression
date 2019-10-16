@@ -13,7 +13,7 @@
     <th class="tg-0pky">Return</th>
   </tr>
   <tr>
-    <td class="tg-0pky">Filter Method</td>
+    <td class="tg-0pky">Filter Methods</td>
     <td class="tg-0pky">Correlation Thresholds</td>
     <td class="tg-0pky">-Use correlation matrix and decide what new features to create</td>
     <td class="tg-0pky">1. data frame<br>2. .corr() (pandas)<br>3. sns.heatmap</td>
@@ -21,57 +21,57 @@
   </tr>
   <tr>
     <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky">1. SelectKBest method<br>2. f_regression method (sklearn.feature_selection)<br></td>
-    <td class="tg-0pky"></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky"></td>
     <td class="tg-0pky">SelectKBest</td>
-    <td class="tg-0pky">-Removes all but highest scoring features</td>
-    <td class="tg-0pky"></td>
+    <td class="tg-0pky">-Removes all but highest scoring features<br>-Looks for:<br>a. Score as test statistic<br>b. P-value<br>-F-regression or Chi-square<br>-T-tests tells if a single variable is statistically significant; F-test tells if a group of<br>variables are jointly significant</td>
+    <td class="tg-0pky">1. SelectKBest method<br>2. f_regression method (sklearn.feature_selection)<br></td>
     <td class="tg-0pky">1. Selected features that are significant</td>
   </tr>
   <tr>
+    <td class="tg-0pky">Wrapper Methods</td>
+    <td class="tg-0pky">Backward Elimination</td>
+    <td class="tg-0pky">-Model is built already<br>-Checks performance of model then iteratively remove the worst performing features one by one until<br>performance is "acceptable"<br>-Performance metric is p-value. p-value &gt; 0.05, remove feature</td>
+    <td class="tg-0pky">1. LRmodel (sm.OLS)<br>2. X and y<br>3. Conditional (while loop or,boolean mask) that generates p-value and checks for and removes feature with p-value &gt; 0.05</td>
+    <td class="tg-0pky">1. Resulting feature/s from condition (usually, column name)</td>
+  </tr>
+  <tr>
     <td class="tg-0pky"></td>
+    <td class="tg-0pky">Recursive Feature Elimination (RFE)</td>
+    <td class="tg-0pky">-Recursively removes<br>attributes then builds model on the remaining attributes,-Accuracy metric to<br>rank feature according to importance</td>
+    <td class="tg-0pky">1. LReg model<br>2. RFE method<br>3. X and y</td>
+    <td class="tg-0pky">1. rfe.ranking_ (ranking of variables based on importance level, 1=important)<br>2. rfe.support_(support of variables (True/False, keep or discard)</td>
+  </tr>
+  <tr>
     <td class="tg-0pky"></td>
-    <td class="tg-0pky">-Looks for:</td>
+    <td class="tg-0pky">Forward Selection</td>
+    <td class="tg-0pky"></td>
     <td class="tg-0pky"></td>
     <td class="tg-0pky"></td>
   </tr>
   <tr>
+    <td class="tg-0pky">Embedded Methods</td>
+    <td class="tg-0pky">LassoCV</td>
+    <td class="tg-0pky">-Penalizes irrelevant features by making its coefficient=0.<br>-Weights the coefficient by virtue of relevance<br>-High α ≈ More non-zero value features</td>
+    <td class="tg-0pky">LReg model,LassoCV method,(sklearn.linear_model)</td>
+    <td class="tg-0pky">1. alpha_<br>2. coef_</td>
+  </tr>
+  <tr>
     <td class="tg-0pky"></td>
+    <td class="tg-0pky">Others:<br>-Elastic Net<br>-Ridge Regression<br>-Regularized Regression</td>
     <td class="tg-0pky"></td>
-    <td class="tg-0pky">Score as test statistic</td>
     <td class="tg-0pky"></td>
     <td class="tg-0pky"></td>
   </tr>
   <tr>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky">P-value</td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
+    <td class="tg-0pky">Linear Dimensionality Reduction</td>
+    <td class="tg-0pky">Principal Component Analysis (PCA)</td>
+    <td class="tg-0pky">-Creates a new feature, aka Principal Component which combines X1 and X2<br>-Ranked in order of explained variance<br>-Only takes in normalized dataset<br>-New Principal Components are not interpretable</td>
+    <td class="tg-0pky">PCA<br>method (sklearn.decomposition)</td>
+    <td class="tg-0pky">1. n_components_<br>2. pca_explained_variance_ratio_</td>
   </tr>
   <tr>
     <td class="tg-0pky"></td>
     <td class="tg-0pky"></td>
-    <td class="tg-0pky">-F-regression or Chi-square</td>
     <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky">-T-tests tells if a single variable is statistically significant; F-test tells if a group of variables are jointly significant</td>
     <td class="tg-0pky"></td>
     <td class="tg-0pky"></td>
   </tr>
@@ -83,7 +83,7 @@
     <td class="tg-0pky">1. resulting feature/s from condition (usually, column name)</td>
   </tr>
   <tr>
-    <td class="tg-0pky"></td>
+    <td class="tg-0pky">Linear Dimensionality Reduction</td>
     <td class="tg-0pky"></td>
     <td class="tg-0pky">-Checks performance of model then iteratively remove the worst performing features one by one until performance is "acceptable"</td>
     <td class="tg-0pky"></td>
@@ -154,14 +154,14 @@
   </tr>
   <tr>
     <td class="tg-0pky"></td>
-    <td class="tg-0pky">Others:&nbsp;&nbsp;Elastic Net, Ridge Regression, Regularized Regression</td>
+    <td class="tg-0pky"></td>
     <td class="tg-0pky"></td>
     <td class="tg-0pky"></td>
     <td class="tg-0pky"></td>
   </tr>
   <tr>
     <td class="tg-0pky">Linear Dimensionality Reduction</td>
-    <td class="tg-0pky">Principal Component Analysis (PCA)</td>
+    <td class="tg-0pky"></td>
     <td class="tg-0pky">-Creates a new feature, aka Principal Component which combines X1 and X2</td>
     <td class="tg-0pky">1. PCA method (sklearn.decomposition)</td>
     <td class="tg-0pky"></td>
